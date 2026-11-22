@@ -1,5 +1,280 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  color: var(--base-text-color);
+  font-family: var(--page-font-family);
+  font-size: 18px;
+  line-height: 1.3;
+  background-color: var(--page-background-color);
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.title {
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.title-decor {
+  color: var(--highlight-text-color);
+  background-color: var(--accent-color);
+}
+
+.page-title {
+  color: var(--title-color);
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 0.825;
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before,
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.decorated-zone::before {
+  border-block-start: 1px solid var(--secondary-color);
+  border-inline-end: 1px solid var(--secondary-color);
+  inset-block-start: var(--page-padding);
+  inset-inline-end: var(--page-padding);
+}
+
+.decorated-zone::after {
+  border-block-end: 1px solid var(--secondary-color);
+  border-inline-start: 1px solid var(--secondary-color);
+  inset-block-end: var(--page-padding);
+  inset-inline-start: var(--page-padding);
+}
+
+.header {
+  display: grid;
+  align-items: start;
+  min-block-size: max(100vh, 668px);
+  padding: var(--page-padding);
+}
+
+.header__rec {
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-end: 20px;
+  display: var(--rec-display);
+  align-items: center;
+  gap: 9px;
+  color: var(--accent-color);
+  line-height: 24px;
+}
+
+.header__rec::after {
+  content: "";
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 2px 2px var(--accent-color);
+}
+
+.header__theme-menu {
+  justify-self: end;
+  margin-block: 65px;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.header__theme-menu-button {
+  border: 1px solid transparent;
+  padding: 2px 12px;
+  color: var(--secondary-color);
+  line-height: 18px;
+  text-transform: lowercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+  border-color: currentColor;
+  cursor: default;
+  pointer-events: none;
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--hover-border-color);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end-color: currentColor;
+}
+
+.header__subtitle {
+  margin-block: 55px;
+}
+
+.content {
+  display: grid;
+  gap: 50px;
+  padding: 40px 10px;
+}
+
+.section {
+  display: grid;
+  gap: 20px;
+}
+
+.cards {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.card__title_italic {
+  font-style: italic;
+}
+
+.link {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:focus {
+  outline: none;
+}
+
+.link:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+.section-gallery {
+  gap: 10px;
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+}
+
+.gallery__img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+  min-block-size: max(100vh, 668px);
+  padding: var(--page-padding);
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding-inline-start: 0;
+  }
+
+  .header__rec {
+    inset-block-start: 20px;
+    inset-inline-end: 28px;
+  }
+
+  .header__theme-menu {
+    margin-block-start: 170px;
+    margin-block-end: 70px;
+  }
+
+  .header__subtitle {
+    justify-self: end;
+    inline-size: clamp(364px, calc(100% / 2 - 10px), 491px);
+  }
+
+  .page-title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .content {
+    gap: 80px;
+    padding: 60px 20px;
+  }
+
+  .section {
+    grid-template-columns: clamp(236px, calc(100% / 3.25), 315px) 1fr;
+  }
+
+  .section-factors .cards {
+    grid-column: 1 / -1;
+  }
+
+  .section-advice .section-advice__subtitle,
+  .section-advice .cards {
+    grid-column: 2;
+  }
+
+  .section-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .gallery__item:first-child,
+  .gallery__item:last-child {
+    grid-column: span 2;
+  }
+
+  .gallery__item:nth-child(2),
+  .gallery__item:nth-child(3) {
+    grid-row: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    margin-inline-start: 20px;
+    margin-block-start: 0;
+    margin-block-end: 215px;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+
+  .section {
+    column-gap: 30px;
+  }
+
+  .section-factors .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
