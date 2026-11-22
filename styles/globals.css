@@ -1,5 +1,3 @@
-/* Глобальные стили для проекта, их можно дополнять и менять по желанию */
-
 *,
 *::before,
 *::after {
@@ -42,7 +40,6 @@ a {
 }
 
 img {
-  display: block;
   max-inline-size: 100%;
   block-size: auto;
 }
